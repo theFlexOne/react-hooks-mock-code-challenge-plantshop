@@ -1,10 +1,17 @@
-import React from "react";
-import PlantCard from "./PlantCard";
+import React, { useEffect, useState } from 'react';
+import PlantCard from './PlantCard';
 
-function PlantList() {
-  return (
-    <ul className="cards">{/* render PlantCards components in here */}</ul>
-  );
+function PlantList({ plants }) {
+  const renderCards = () => {
+    return (
+      plants &&
+      plants.map(plant => {
+        return <PlantCard key={plant.id} plant={plant} />;
+      })
+    );
+  };
+
+  return <ul className="cards">{renderCards()}</ul>;
 }
 
 export default PlantList;
